@@ -1,18 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { UserStoryComponent } from './user-story/user-story.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { SecurityUserComponent } from './security-user/security-user.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { TitlePageComponent } from './shared/components/title-page/title-page.component';
+import { ContainerFluidComponent } from './shared/components/container-fluid/container-fluid.component';
+import { PanelComponent } from './shared/components/panel/panel.component';
+import { PanelHeadComponent } from './shared/components/panel-head/panel-head.component';
+import { PanelBodyComponent } from './shared/components/panel-body/panel-body.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    UserStoryComponent,
+    FooterComponent,
+    SecurityUserComponent,
+    SpinnerComponent,
+    TitlePageComponent,
+    ContainerFluidComponent,
+    PanelComponent,
+    PanelHeadComponent,
+    PanelBodyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

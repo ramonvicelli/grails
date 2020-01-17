@@ -1,0 +1,310 @@
+<div>
+  <app-title-page [title]="'User Story'"></app-title-page>
+
+  <app-container-fluid>
+    <div class="col-md-6">
+      <app-panel>
+        <app-panel-head header [title]="'User Story'">
+          <div class="btn-group pull-right">
+            <!-- link.vm -->
+            <a href="http://localhost:10080/jackanory-grails/userStory/create" title="Create a User Story"
+              class="btn btn-primary btn-xs">
+              <!-- icon.vm -->
+              <span class="glyphicon glyphicon-plus"></span></a>
+            <!-- link.vm -->
+            <a (click)="changeToEditableMode()" title="Update a User Story" class="btn btn-primary btn-xs">
+              <!-- icon.vm -->
+              <span class="glyphicon glyphicon-pencil"></span></a>
+            <!-- link.vm -->
+            <a href="http://localhost:10080/jackanory-grails/userStory/showDelete/1" title="Delete a User Story"
+              class="btn btn-danger btn-xs">
+              <!-- icon.vm -->
+              <span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+        </app-panel-head>
+
+        <div subHeader class="navbar-default clearfix">
+          <div class="navbar-header">
+            <span class="navbar-brand">Workflow (Complete): </span>
+          </div>
+          <ul class="nav navbar-nav pull-right">
+
+            <li>
+              <a href="http://localhost:10080/jackanory-grails/userStory/trigger/1?triggerCode=REOPEN" title="Reopen">
+                Reopen
+              </a>
+            </li>
+
+            <li>
+              <a href="http://localhost:10080/jackanory-grails/userStory/trigger/1?triggerCode=CLOSE" title="Close">
+                Close
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <app-panel-body body>
+          <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)" class="form-horizontal" role="form">
+
+
+            <!-- div.vm -->
+            <div class="form-group">
+
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Name</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+                <input *ngIf="editMode" type="text" class="fortextbox" name="name" formControlName="name" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  {{ user.name }}
+                </p>
+
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger">
+
+                  <div *ngIf="f.name.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Description</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+
+                <input *ngIf="editMode" type="text" class="fortextbox" name="description"
+                  formControlName="description" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.description }}
+
+                </p>
+
+
+                <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
+                  class="alert alert-danger">
+
+                  <div *ngIf="f.description.errors.required">
+                    Description is required.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Category</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+
+                <input *ngIf="editMode" type="text" class="fortextbox" name="category" formControlName="category" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.category }}
+
+                </p>
+              </div>
+            </div>
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Sub Category</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+
+                <input *ngIf="editMode" type="text" class="fortextbox" name="subCategory"
+                  formControlName="subCategory" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.subCategory }}
+
+                </p>
+              </div>
+            </div>
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Estimated Start Date</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+
+
+                <input *ngIf="editMode" type="text" class="fortextbox" name="estimatedStartDate"
+                  formControlName="estimatedStartDate" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.estimatedStartDate }}
+
+                </p>
+              </div>
+            </div>
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Sponsor's Email</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+                <input *ngIf="editMode" type="text" class="fortextbox" name="sponsorEmail"
+                  formControlName="sponsorEmail" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.sponsorEmail }}
+
+                </p>
+              </div>
+            </div>
+            <!-- div.vm -->
+            <div class="form-group">
+              <!-- label.vm -->
+              <label class="control-label col-xs-12 col-sm-3">Complexity</label><!-- div.vm -->
+              <div class="input-group col-xs-12 col-sm-9">
+                <!-- p.vm -->
+
+                <input *ngIf="editMode" type="text" class="fortextbox" name="complexity" formControlName="complexity" />
+
+                <p *ngIf="!editMode" class="form-control-static">
+                  <!-- attributeValue.vm -->
+
+                  {{ user.complexity }}
+
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group col-xs-12 col-sm-9">
+                <input *ngIf="editMode" type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Log In">
+              </div>
+            </div>
+          </form>
+        </app-panel-body>
+      </app-panel>
+
+      
+    </div>
+    <!-- div.vm -->
+    <div class="col-md-6">
+      <!-- panel.vm -->
+      <div class="panel panel-primary">
+        <!-- panelHeading.vm -->
+        <div class="panel-heading clearfix">
+          <!-- heading.vm -->
+          <h4 class="panel-title pull-left">Requirements</h4>
+        </div>
+        <!-- panelBody.vm -->
+        <div class="panel-body">
+          <!-- panel.vm -->
+          <div class="panel panel-primary">
+            <!-- panelBody.vm -->
+            <div class="panel-body">
+              <!-- form.vm -->
+
+              <!-- p.vm -->
+              <p>
+                <!-- text.vm -->
+                Use the input field below to create a new Requirement.
+              </p>
+              <!-- formGroup.vm -->
+              <div class="form-group ">
+                <!-- label.vm -->
+                <label for="requirement" class="control-label col-xs-12 col-sm-3">Requirement</label>
+                <!-- div.vm -->
+                <div class="input-group col-xs-12 col-sm-9">
+                  <!-- textField.vm -->
+                  <input id="requirement" name="requirement" class="form-control" placeholder="Enter Requirement"
+                    type="text">
+
+                </div>
+              </div>
+              <!-- div.vm -->
+              <div class="text-right">
+                <!-- div.vm -->
+                <div class="btn-toolbar">
+                  <!-- submit.vm -->
+                  <input name="submit" value="Create" class="btn btn-primary" id="submit" type="submit">
+                </div>
+                <!-- hiddenField.vm -->
+                <input name="userStoryId" value="1" id="userStoryId" type="hidden">
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- panelBody.vm -->
+        <div class="panel-body">
+          <!-- table.vm -->
+          <table id="UserStoryRequirementTable" class="table table-striped">
+            <caption>The table below displays a list of requirements for this User Story.</caption>
+            <thead>
+              <tr>
+                <th class="column-searchable column-orderable col-md-11">
+                  Requirement
+                </th>
+                <th class="text-nowrap text-right col-md-1">
+                  &nbsp;
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td class="column-searchable column-orderable col-md-11">
+                  <!-- attributeValue.vm -->
+
+                  ABC
+
+                </td>
+                <td class="text-nowrap text-right col-md-1">
+                  <!-- div.vm -->
+                  <div class="btn-group">
+                    <!-- link.vm -->
+                    <a href="/jackanory-grails/userStoryRequirement/deleteFromUserStory?userStoryId=1&userStoryRequirementId=6"
+                      title="Delete" class="btn btn-danger btn-xs">
+                      <!-- icon.vm -->
+                      <span class="glyphicon glyphicon-trash"></span></a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="column-searchable column-orderable col-md-11">
+                  <!-- attributeValue.vm -->
+
+                  EFG
+
+                </td>
+                <td class="text-nowrap text-right col-md-1">
+                  <!-- div.vm -->
+                  <div class="btn-group">
+                    <!-- link.vm -->
+                    <a href="/jackanory-grails/userStoryRequirement/deleteFromUserStory?userStoryId=1&userStoryRequirementId=7"
+                      title="Delete" class="btn btn-danger btn-xs">
+                      <!-- icon.vm -->
+                      <span class="glyphicon glyphicon-trash"></span></a>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </app-container-fluid>
+</div>
