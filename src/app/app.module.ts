@@ -15,6 +15,10 @@ import { ContainerFluidComponent } from './shared/components/container-fluid/con
 import { PanelComponent } from './shared/components/panel/panel.component';
 import { PanelHeadComponent } from './shared/components/panel-head/panel-head.component';
 import { PanelBodyComponent } from './shared/components/panel-body/panel-body.component';
+import { UserStoryPanelComponent } from './user-story/user-story-panel/user-story-panel.component';
+import { IconPlusComponent } from './shared/components/icon/icon-plus/icon-plus.component';
+import { IconPencilComponent } from './shared/components/icon/icon-pencil/icon-pencil.component';
+import { IconTrashComponent } from './shared/components/icon/icon-trash/icon-trash.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { PanelBodyComponent } from './shared/components/panel-body/panel-body.co
     ContainerFluidComponent,
     PanelComponent,
     PanelHeadComponent,
-    PanelBodyComponent
+    PanelBodyComponent,
+    UserStoryPanelComponent,
+    IconPlusComponent,
+    IconPencilComponent,
+    IconTrashComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  currentUrl: string;
 
-  constructor() { }
+  constructor(private router: Router) {
+    router.events.subscribe((_: NavigationEnd) => {
+      if (_.url) {
+        this.currentUrl = _.url;
+      }
+    });
+  }
 
   ngOnInit() {
   }
-
 }

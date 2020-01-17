@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PanelHeadComponent implements OnInit {
 
   @Input()
-  title = ''
+  title = '';
 
   constructor() { }
 

@@ -15,17 +15,17 @@ export class UserStoryService {
     estimatedStartDate: '15-Apr-2015',
     sponsorEmail: '',
     complexity: '',
-  }
+  };
 
   constructor() { }
 
   getUser(): User {
-    return this.userStory
+    return this.userStory;
   }
 
   udpateUser(user: User): User {
-    this.userStory = user
+    this.userStory = user;
 
-    return this.userStory
+    return this.userStory;
   }
 }

@@ -14,7 +14,7 @@
         <!-- menuItem.vm -->
 
 
-        <li class=" active">
+        <li [ngClass]="{'active': currentUrl == '/'}">
           <!-- link.vm -->
           <a routerLink="/" title="User Story">
             <!-- text.vm -->
@@ -46,7 +46,7 @@
         <!-- menuItem.vm -->
 
 
-        <li class="">
+        <li [ngClass]="{'active': currentUrl == '/security-user'}">
           <a href="#" class="dropdown-toggle" id="security" data-toggle="dropdown">
             <!-- text.vm -->
             Security

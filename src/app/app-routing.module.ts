@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserStoryComponent } from './user-story/user-story.component'
-import { SecurityUserComponent } from './security-user/security-user.component'
+import { UserStoryComponent } from './user-story/user-story.component';
+import { SecurityUserComponent } from './security-user/security-user.component';
 
 
 const routes: Routes = [{

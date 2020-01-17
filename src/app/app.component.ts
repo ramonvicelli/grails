@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
         map(() => {
           const child = this.activatedRoute.firstChild;
 
-          if (child.snapshot.data['title']) {
-            return child.snapshot.data['title'];
+          if (child.snapshot.data.title) {
+            return child.snapshot.data.title;
           }
 
           return appTitle;
